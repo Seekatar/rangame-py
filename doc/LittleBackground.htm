@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<Title>A Little About This Program</Title>
+</HEAD>
+<BODY>
+<Object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+	<param name="Keyword" value=".net">
+	<param name="Keyword" value="background">
+	<param name="Keyword" value="C#">
+	<param name="Keyword" value="java">
+	<param name="Keyword" value="NOVA">
+	<param name="Keyword" value="program">
+</OBJECT>
+<h4><FONT SIZE=+2 face="Arial">A Little about this program</FONT></h4>
+<P><font face="Arial" size="2">When I saw the NOVA&nbsp;program described in <a href="LittleTheory.htm">A
+Little Theory</a>, I could hardly believe it. &nbsp;To confirm their results I&nbsp;wrote a little random game in the just-released object oriented Turbo Pascal from Borland. &nbsp;Sure enough, same results. &nbsp;I later wrote it as an OS/2, multi-threaded PM&nbsp;app.&nbsp; Then as a 16-bit C Windows app.&nbsp;
+Then a multithreaded Java applet/application.&nbsp; And now, in the new millennium,
+about fifteen years after the first inception, it is now a C# application.</font></P>  <P><font face="Arial" size="2"><b>Notes
+about the C# application<br>
+</b>This is a pretty close port of the Java applet from before.&nbsp; The main
+plotting code is largely unchanged.&nbsp; It uses a Bitmap object to do the
+in-memory plotting for repainting.&nbsp; Most of the rest of the UI is all new
+since it completely different.&nbsp; I added other bells and whistles such as
+this help and printing instead of learning using book samples.&nbsp; It does use
+a simple background thread for plotting to avoid hanging the UI.</font></P>  <P><font face="Arial" size="2"><b>Notes
+about the Java applet</b><br>
+The Java applet used a few interesting things. &nbsp;It used a memory Image to buffer all the screen writes.&nbsp; Yes every point
+was written twice, once to the screen, once to memory. &nbsp;I&nbsp;could have done it once to memory, but you
+lost the neat effect of seeing the image evolve as it was plotted. &nbsp;It also
+used a background thread to plot all the points.<BR> <BR> The applet also ran as a stand-alone application. &nbsp;This idea was stolen from the Core&nbsp;Java book by Cornell and Horstmann.&nbsp;&nbsp;This gave me some headaches since it would work fine as an application (1.02 JDK on NT), but
+had problems as an applet.</font></P>  <P><font face="Arial" size="2">The UI was ok, considering
+I used awt. &nbsp;It did have cascaded dialogs, one modless, another modal which caused some problems which I&nbsp;had to work around. &nbsp;I&nbsp;also had problems running as an applet only
+using modal dialogs when calculating the preferred sizes. Running it as an application
+workes fine, but I had to make all dialogs modeless to get the layout to work in the browser.&nbsp;&nbsp;Another hack had to do with getting focus to the correct parent after loading a cascaded dialog.</font></P> 
+
+</BODY>
+</HTML>
