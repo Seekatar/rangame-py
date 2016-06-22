@@ -1,6 +1,6 @@
-from Tkinter import *
-import tkFileDialog
-import tkColorChooser
+from tkinter import *
+import tkinter.filedialog
+import tkinter.colorchooser
 
 class Settings(object):
 
@@ -248,9 +248,9 @@ class SettingsDlg(object):
 
     @staticmethod
     def DoModal(settings):
-        import Tkinter
+        import tkinter
 
-        root = Tkinter.Tk()
+        root = tkinter.Tk()
         root.title( "RangamePy Settings" )
         app = SettingsDlg(root,settings)
 

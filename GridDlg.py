@@ -1,11 +1,12 @@
-from Tkinter import *
-import tkFileDialog
-import tkColorChooser
+from tkinter import *
+import tkinter.filedialog
+import tkinter.colorchooser
 
 class GridDlg(object):
 
-    def label(self,text,r,c):
-        l = Label( self.frame, text= text,underline=0)
+
+    def label(self,text,r,c,underline=-1,font=None):
+        l = Label( self.frame, text= text,underline=underline,font = font)
         l.grid(row=r,column=c,sticky=W)
         return l
 
@@ -64,14 +65,20 @@ class GridDlg(object):
     def decimalOnly(self,S,s,i):
         return self.numbersOnly(S,s,i) or (S == '.' and s.find('.') == -1)
 
-    def __init__(self, master):
+    def __init__(self,title):
+        import tkinter
 
-        self.frame = Frame(master, padx=10, pady=10)
+        self.root = tkinter.Tk()
+        self.root.title(title)
+
+        self.frame = Frame(self.root, padx=10, pady=10)
         self.numberValidator = self.numberCommand = (self.frame.register(self.numbersOnly), '%S', '%s', '%i') # change, before, index
         self.signedNumberValidator = (self.frame.register(self.signedNumbersOnly), '%S', '%s', '%i') # change, before, index
         self.decimalValidator = (self.frame.register(self.decimalOnly), '%S', '%s', '%i') # change, before, index
 
         self.frame.pack()
+
+        self.root.protocol("WM_DELETE_WINDOW", self.close)
 
         self.frame.bind_all('<KeyPress-Escape>',self.close)
 
@@ -80,15 +87,11 @@ class GridDlg(object):
     def close(self,event=None):
         self.frame.quit()
 
-    def DoModal(self,settings,root,title):
-        import Tkinter
+    def DoModal(self):
 
-        root = Tkinter.Tk()
-        root.title( title)
+        self.root.mainloop()
 
-        root.mainloop()
+        self.root.destroy() #Unload Tkinter
 
-        root.destroy() #Unload Tkinter
-
-        return app.okClicked
+        return self.okClicked
 

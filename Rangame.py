@@ -80,7 +80,7 @@ class Rangame:
 
         if not self.settings.UseRegular:
             pygame.mouse.set_cursor(*pygame.cursors.broken_x)
-            self.totalPoints = sys.maxint
+            self.totalPoints = sys.maxsize
             return
 
         for i in range(self.settings.Sides):
@@ -150,8 +150,8 @@ class Rangame:
     def Plot(self,points):
         
         if self.totalPoints > self.settings.PointsK*1000:
-            if self.totalPoints != sys.maxint:
-                self.totalPoints = sys.maxint
+            if self.totalPoints != sys.maxsize:
+                self.totalPoints = sys.maxsize
                 self.plotter.SaveCurrent()
                 if self.settings.ShowHisto:
                     self.histo.show(self._counts,self.settings.Sides)        
@@ -204,8 +204,8 @@ class Rangame:
 
 def main():
     pygame.init()
-    WIDTH = 800
-    HEIGHT = 800
+    WIDTH = 1000
+    HEIGHT = 1000
     surface = pygame.display.set_mode((WIDTH,HEIGHT))
     pygame.display.set_caption("RangamePy")
 
@@ -243,11 +243,10 @@ def main():
                     rg.ToggleHisto()
                 elif event.key == K_w:
                     rg.Wipe()
-                    print "Forground is ", settings.Foreground
+                    print( "Forground is ", settings.Foreground )
                 elif event.key == K_F1:
-                    # TODO HelpDlg().DoModal()
-                    pass
-
+                    HelpDlg.Show()
+                    
         rg.Plot(100)
 
         pygame.display.update()
